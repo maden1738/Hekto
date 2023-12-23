@@ -1,3 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .btn-red {
+    @apply px-9 py-2 bg-accent text-white rounded-sm;
+  }
+
+  .btn-green {
+    @apply bg-green-500 rounded-sm py-[7px] px-[12px] text-white;
+  }
+}
