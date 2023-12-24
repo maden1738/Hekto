@@ -1,9 +1,18 @@
+import { Link } from "react-router-dom";
+import { CiMail } from "react-icons/ci";
+import { BsTelephone } from "react-icons/bs";
 export default function Header() {
   return (
-    <section className="bg-primary text-white font-semibold flex justify-around py-4 font-body ">
+    <section className="bg-primary  text-white font-semibold flex justify-between py-4 font-body px-52">
       <div className="flex gap-9">
-        <div>mhhasanul@gmail.com</div>
-        <div>(12345)67890</div>
+        <div className="flex gap-2 items-center">
+          <CiMail />
+          <div>mhhasanul@gmail.com</div>
+        </div>
+        <div className="flex gap-2 items-center">
+          <BsTelephone />
+          <div>(12345)67890</div>
+        </div>
       </div>
       <div className="flex gap-4">
         <select name="language" id="" className="bg-inherit">
@@ -14,7 +23,7 @@ export default function Header() {
           <option value="usd">USD</option>
           <option value="nrs">NRS</option>
         </select>
-        <div>Login</div>
+        <Link to="/login">Login</Link>
         <div>WishList</div>
       </div>
     </section>
