@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
-import Main from "./components/Main";
+import Carousel from "./components/Carousel";
 import Featured from "./components/Featured";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
@@ -17,7 +17,7 @@ function App() {
     <>
       <Header />
       <Navbar />
-
+      <Carousel />
       <Routes>
         <Route path="pages" element={<Pages />} />
         <Route path="products" element={<Products />} />

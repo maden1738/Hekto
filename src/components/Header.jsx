@@ -3,7 +3,7 @@ import { CiMail } from "react-icons/ci";
 import { BsTelephone } from "react-icons/bs";
 export default function Header() {
   return (
-    <section className="bg-primary  text-white font-semibold flex justify-between py-4 font-body px-52">
+    <section className="bg-primary  text-white font-semibold flex justify-between py-2 font-body xl:px-[15%] lg:px-[8%]">
       <div className="flex gap-9">
         <div className="flex gap-2 items-center">
           <CiMail />
