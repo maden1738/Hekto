@@ -18,6 +18,7 @@ function App() {
       <Header />
       <Navbar />
       <Carousel />
+      <Featured />
       <Routes>
         <Route path="pages" element={<Pages />} />
         <Route path="products" element={<Products />} />

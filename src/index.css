@@ -10,9 +10,9 @@
   }
 
   .btn-green {
-    @apply bg-green-500 rounded-sm py-[7px] px-[12px] text-white;
+    @apply bg-green-500 rounded-sm py-[3px] px-[12px] text-white;
   }
   .container {
-    @apply px-52;
+    @apply px-[15%];
   }
 }
