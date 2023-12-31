@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <nav className="font-body flex items-center justify-between  my-4 lg:px-[8%] xl:px-[15%] ">
+    <nav className="my-4 flex items-center justify-between  font-body lg:px-[8%] xl:px-[15%] ">
       <div className="flex items-center gap-16">
         <div className="text-4xl font-bold ">Hekto</div>
         <ul className="flex gap-8">
@@ -27,9 +27,10 @@ export default function Navbar() {
           </li>
         </ul>
       </div>
+
       <div className="flex">
         <input type="text" className="border border-gray-300" />
-        <div className="bg-accent flex justify-center items-center  px-2 cursor-pointer">
+        <div className="flex cursor-pointer items-center justify-center  bg-accent px-2">
           <img src={searchLens} alt="" width="14px" height="14px" />
         </div>
       </div>

@@ -1,5 +1,3 @@
-import lamp from "../assets/lamp.png";
-import chair from "../assets/chair.png";
 import discount from "../assets/discount.svg";
 import banner1 from "../assets/banner-1.png";
 import banner2 from "../assets/banner-2.png";
@@ -47,9 +45,9 @@ export default function Carousel() {
           return (
             <div className="relative font-body">
               <img src={el.image} alt="" />
-              <div className="absolute top-0 left-[20%] w-[35%]">
-                <p className="text-accent pt-[30%]">{el.h1}</p>
-                <p className="text-[45px] font-bold tracking-wide ">{el.h2}</p>
+              <div className="absolute left-[20%] top-0 w-[35%]">
+                <p className="pt-[30%] text-accent">{el.h1}</p>
+                <p className="text-[50px] font-bold tracking-wide ">{el.h2}</p>
                 <p className="mt-4 text-slate-400">{el.description}</p>
                 <button className="btn-red mt-7">Shop Now</button>
               </div>

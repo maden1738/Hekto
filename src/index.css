@@ -6,13 +6,13 @@
 
 @layer components {
   .btn-red {
-    @apply px-9 py-2 bg-accent text-white rounded-sm;
+    @apply rounded-sm bg-accent px-9 py-2 text-white;
   }
 
   .btn-green {
-    @apply bg-green-500 rounded-sm py-[3px] px-[12px] text-white;
+    @apply rounded-sm bg-green-500 px-[12px] py-[3px] text-white;
   }
   .container {
-    @apply px-[15%];
+    @apply mx-auto px-[15%];
   }
 }
