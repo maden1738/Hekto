@@ -45,11 +45,13 @@ export default function Carousel() {
           return (
             <div className="relative font-body">
               <img src={el.image} alt="" />
-              <div className="absolute left-[20%] top-0 w-[35%]">
-                <p className="pt-[30%] text-accent">{el.h1}</p>
-                <p className="text-[50px] font-bold tracking-wide ">{el.h2}</p>
-                <p className="mt-4 text-slate-400">{el.description}</p>
-                <button className="btn-red mt-7">Shop Now</button>
+              <div className="absolute left-[20%] top-0  lg:left-[20%] lg:top-0 lg:w-[35%]">
+                <p className="text-accent md:pt-[18%] lg:pt-[42%]">{el.h1}</p>
+                <p className="text-[1.5rem] font-bold lg:text-[3.125rem] lg:tracking-wide ">
+                  {el.h2}
+                </p>
+                <p className="text-slate-400 lg:mt-4">{el.description}</p>
+                <button className="btn-red md:mt-2 lg:mt-7">Shop Now</button>
               </div>
             </div>
           );
