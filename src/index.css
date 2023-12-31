@@ -12,7 +12,7 @@
   .btn-green {
     @apply rounded-sm bg-green-500 px-[12px] py-[3px] text-white;
   }
-  .container {
-    @apply mx-auto px-[15%];
+  .wrapper {
+    @apply mx-auto px-[3%];
   }
 }
