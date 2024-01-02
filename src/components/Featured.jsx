@@ -57,6 +57,27 @@ export default function Featured() {
       image: featured1,
     },
   ];
+  function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", background: "none" }}
+        onClick={onClick}
+      />
+    );
+  }
+
+  function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", background: "green" }}
+        onClick={onClick}
+      />
+    );
+  }
   const settings = {
     dots: true,
     infinite: true,
@@ -64,6 +85,8 @@ export default function Featured() {
     slidesToShow: 4,
     slidesToScroll: 4,
     initialSlide: 0,
+    // nextArrow: <SampleNextArrow />,
+    // prevArrow: <SamplePrevArrow />,
     responsive: [
       {
         breakpoint: 1243,
@@ -75,7 +98,7 @@ export default function Featured() {
         },
       },
       {
-        breakpoint: 700,
+        breakpoint: 850,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -92,7 +115,7 @@ export default function Featured() {
     ],
   };
   return (
-    <div className=" mx-auto  mt-[219px] w-[75%] ">
+    <div className=" mx-auto  mt-8 w-[75%] lg:mt-[219px] ">
       <Slider {...settings}>
         {products.map((el) => (
           <FeaturedProduct

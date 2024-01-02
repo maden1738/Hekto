@@ -12,22 +12,22 @@ export default function FeaturedProduct(props) {
         setHover(false);
       }}
     >
-      <div className="bg-slate-50 flex justify-center items-center px-[45px] pt-[45px] pb-6  flex-col relative">
-        <img src={props.image} alt="" className="w-[178px] h-[178px] " />
+      <div className="relative flex flex-col items-center justify-center bg-slate-50 px-[45px]  pb-6 pt-[45px]">
+        <img src={props.image} alt="" className="h-[178px] w-[178px] " />
         <button
           className={`btn-green ${
-            hover ? "block absolute bottom-1" : "hidden"
+            hover ? "absolute bottom-1 block" : "hidden"
           }`}
         >
           View Details
         </button>
       </div>
       <div
-        className={`flex justify-center items-center flex-col pb-3 ${
+        className={`flex flex-col items-center justify-center pb-3 ${
           hover ? "bg-indigo-700 text-white " : ""
         }`}
       >
-        <p className="text-accent text-lg font-bold pt-4">{props.title}</p>
+        <p className="pt-4 text-lg font-bold text-accent">{props.title}</p>
         <img src={colors} alt="" className="py-4" />
         <p className="text-sm">Code: {props.code}</p>
         <p className="text-sm">${props.price}</p>

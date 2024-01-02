@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import Home from "./pages/Home";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Carousel from "./components/Carousel";
@@ -17,9 +18,10 @@ function App() {
     <>
       <Header />
       <Navbar />
-      <Carousel />
-      <Featured />
+      {/* <Carousel />
+      <Featured /> */}
       <Routes>
+        <Route path="" element={<Home />} />
         <Route path="pages" element={<Pages />} />
         <Route path="products" element={<Products />} />
         <Route path="blog" element={<Blog />} />

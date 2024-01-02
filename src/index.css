@@ -12,7 +12,14 @@
   .btn-green {
     @apply rounded-sm bg-green-500 px-[12px] py-[3px] text-white;
   }
+  .container {
+    @apply mx-auto w-full  px-[3%] sm:max-w-[600px] md:max-w-[740px] lg:max-w-[990px] xl:max-w-[1216px];
+  }
   .wrapper {
-    @apply mx-auto px-[3%];
+    @apply mx-auto w-full  px-[3%];
   }
 }
+
+/* * {
+  background-color: rgba(255, 0, 0, 0.5);
+} */
