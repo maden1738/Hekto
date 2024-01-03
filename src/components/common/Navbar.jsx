@@ -11,7 +11,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="wrapper  my-4  flex  justify-between font-body md:px-[8%] lg:justify-between xl:px-[15%]">
+    <nav className="wrapper  my-4  flex  justify-between font-body md:px-[8%] lg:justify-between ">
       <div className=" flex lg:gap-16">
         <div className="text-4xl font-bold">Hekto</div>
         <ul
