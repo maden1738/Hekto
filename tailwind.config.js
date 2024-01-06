@@ -7,6 +7,7 @@ export default {
         primary: "#7E33E0",
         accent: "#FB2E86",
         background: "#F2F0FF",
+        secondary: "#151875",
       },
       fontFamily: {
         body: ["Josefin Sans"],

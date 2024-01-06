@@ -1,4 +1,4 @@
-import searchLens from "../assets/search.png";
+import searchLens from "../../assets/search.png";
 import { Link } from "react-router-dom";
 import { IoMenuSharp } from "react-icons/io5";
 import { useState } from "react";

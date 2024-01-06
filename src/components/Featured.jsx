@@ -115,7 +115,7 @@ export default function Featured() {
     ],
   };
   return (
-    <div className=" mx-auto  mt-10 w-[75%] md:mt-[182px] lg:mt-[219px] ">
+    <div className=" wrapper  mt-10  md:mt-[182px] lg:mt-[219px] ">
       <Slider {...settings}>
         {products.map((el) => (
           <FeaturedProduct

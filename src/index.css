@@ -13,10 +13,13 @@
     @apply rounded-sm bg-green-500 px-[12px] py-[3px] text-white;
   }
   .container {
-    @apply mx-auto w-full  px-[3%] sm:max-w-[600px] md:max-w-[740px] lg:max-w-[990px] xl:max-w-[1216px];
+    @apply mx-auto w-full  px-3 sm:max-w-[600px] md:max-w-[740px] lg:max-w-[990px] lg:px-[15%] xl:max-w-[1216px];
   }
   .wrapper {
     @apply mx-auto w-full  px-[3%] lg:px-[15%];
+  }
+  flex-center {
+    @apply flex items-center justify-center;
   }
 }
 
