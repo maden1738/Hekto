@@ -28,6 +28,7 @@ function App() {
         <Route path="blog" element={<Blog />} />
         <Route path="shop" element={<Shop />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="login" element={<Login />} />
       </Routes>
     </>
   );

@@ -7,6 +7,7 @@ import { IoCartOutline } from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa";
 import axios from "axios";
 import noImage from "../assets/noimage.jpg";
+import Footer from "../components/common/Footer";
 
 export default function Home() {
   const [latestProduct, setLatestProduct] = useState([]);
@@ -22,7 +23,7 @@ export default function Home() {
       <Carousel />
       <Featured />
 
-      <div className=" mt-[100px] font-body">
+      <div className=" mb-[100px] mt-[100px] font-body">
         <h2 className="mb-6 text-center text-4xl font-bold text-violet-950">
           Latest Product
         </h2>
@@ -64,6 +65,7 @@ export default function Home() {
           })}
         </ul>
       </div>
+      <Footer />
     </>
   );
 }

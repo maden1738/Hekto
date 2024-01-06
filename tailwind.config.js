@@ -8,6 +8,8 @@ export default {
         accent: "#FB2E86",
         background: "#F2F0FF",
         secondary: "#151875",
+        text: "#101750",
+        subText: "#8A8FB9",
       },
       fontFamily: {
         body: ["Josefin Sans"],
