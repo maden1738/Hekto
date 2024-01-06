@@ -1,85 +1,77 @@
 import FeaturedProduct from "./FeaturedProduct";
-import featured1 from "../assets/featured1.png";
-import featured2 from "../assets/featured2.png";
-
+// import featured1 from "../assets/featured1.png";
+// import featured2 from "../assets/featured2.png";
+import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import axios from "axios";
 
 export default function Featured() {
-  const products = [
-    {
-      title: "Cantilever Chair",
-      code: "Y523201",
-      price: 42.0,
-      image: featured1,
-    },
-    {
-      title: "Cantilever Chair",
-      code: "Y523201",
-      price: 42.0,
-      image: featured2,
-    },
-    {
-      title: "Cantilever Chair",
-      code: "Y523201",
-      price: 42.0,
-      image: featured1,
-    },
-    {
-      title: "Cantilever Chair",
-      code: "Y523201",
-      price: 42.0,
-      image: featured1,
-    },
-    {
-      title: "Cantilever Chair",
-      code: "Y523201",
-      price: 42.0,
-      image: featured1,
-    },
-    {
-      title: "Cantilever Chair",
-      code: "Y523201",
-      price: 42.0,
-      image: featured2,
-    },
-    {
-      title: "Cantilever Chair",
-      code: "Y523201",
-      price: 42.0,
-      image: featured1,
-    },
-    {
-      title: "Cantilever Chair",
-      code: "Y523201",
-      price: 42.0,
-      image: featured1,
-    },
-  ];
-  function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "none" }}
-        onClick={onClick}
-      />
-    );
-  }
+  const [trendingProducts, setTrendingProducts] = useState([1, 2]);
+  useEffect(() => {
+    axios
+      .get("https://ecommerce-sagartmg2.vercel.app/api/products/trending")
+      .then((res) => setTrendingProducts(res.data.data))
+      .catch((err) => console.log(err));
+  }, []);
+  //     // .then((res) => res.json)
+  //     // .then((data) => setTrendingProducts(data))
 
-  function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "green" }}
-        onClick={onClick}
-      />
-    );
-  }
+  // const products = [
+  //   {
+  //     title: "Cantilever Chair",
+  //     code: "Y523201",
+  //     price: 42.0,
+  //     image: featured1,
+  //   },
+  //   {
+  //     title: "Cantilever Chair",
+  //     code: "Y523201",
+  //     price: 42.0,
+  //     image: featured2,
+  //   },
+  //   {
+  //     title: "Cantilever Chair",
+  //     code: "Y523201",
+  //     price: 42.0,
+  //     image: featured1,
+  //   },
+  //   {
+  //     title: "Cantilever Chair",
+  //     code: "Y523201",
+  //     price: 42.0,
+  //     image: featured1,
+  //   },
+  //   {
+  //     title: "Cantilever Chair",
+  //     code: "Y523201",
+  //     price: 42.0,
+  //     image: featured1,
+  //   },
+  //   {
+  //     title: "Cantilever Chair",
+  //     code: "Y523201",
+  //     price: 42.0,
+  //     image: featured2,
+  //   },
+  //   {
+  //     title: "Cantilever Chair",
+  //     code: "Y523201",
+  //     price: 42.0,
+  //     image: featured1,
+  //   },
+  //   {
+  //     title: "Cantilever Chair",
+  //     code: "Y523201",
+  //     price: 42.0,
+  //     image: featured1,
+  //   },
+  // ];
+
   const settings = {
     dots: true,
+    arrows: false,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
@@ -117,13 +109,8 @@ export default function Featured() {
   return (
     <div className=" wrapper  mt-10  md:mt-[182px] lg:mt-[219px] ">
       <Slider {...settings}>
-        {products.map((el) => (
-          <FeaturedProduct
-            title={el.title}
-            code={el.code}
-            price={el.price}
-            image={el.image}
-          />
+        {trendingProducts.map((el) => (
+          <FeaturedProduct key={el._id} product={el} />
         ))}
       </Slider>
     </div>
