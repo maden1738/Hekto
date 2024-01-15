@@ -5,7 +5,7 @@ import Footer from "../components/common/Footer";
 export default function () {
   return (
     <>
-      <Intro />
+      <Intro name="My Account" />
       <div className="flex justify-center font-body ">
         <div className="my-10  flex flex-col items-center lg:my-24 lg:p-12 lg:shadow ">
           <h1 className="bold text-[32px]">Login</h1>

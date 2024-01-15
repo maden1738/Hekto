@@ -2,22 +2,27 @@ import React, { useEffect, useState } from "react";
 import Carousel from "../components/Carousel";
 import Featured from "../components/Featured";
 import { Link } from "react-router-dom";
-import chair from "../assets/latest_chair.png";
 import { IoCartOutline } from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa";
 import axios from "axios";
 import noImage from "../assets/noimage.jpg";
 import Footer from "../components/common/Footer";
+import ProductLoader from "../components/common/ProductLoader";
 
 export default function Home() {
   const [latestProduct, setLatestProduct] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     axios
       .get("https://ecommerce-sagartmg2.vercel.app/api/products/?per_page=6")
-      .then((res) => setLatestProduct(res.data.products))
+      .then((res) => {
+        setLatestProduct(res.data.products);
+        setIsLoading(false);
+      })
       .catch((err) => console.log(err));
   }, []);
-  console.log(latestProduct);
+
   return (
     <>
       <Carousel />
@@ -28,10 +33,14 @@ export default function Home() {
           Latest Product
         </h2>
         <ul className="wrapper grid gap-[31px] md:grid-cols-2 lg:grid-cols-3">
+          {isLoading &&
+            [1, 2, 3, 4, 5, 6].map((el) => {
+              return <ProductLoader />;
+            })}
           {latestProduct.map((el) => {
             return (
               <li className="group  hover:shadow-2xl">
-                <Link to="/products/watch">
+                <Link to={`/products/${el._id}`}>
                   <div className="relative bg-slate-50 group-hover:bg-white">
                     <span className="absolute bottom-4 left-0  flex  scale-0 flex-col gap-4 p-4 group-hover:scale-100">
                       <IoCartOutline

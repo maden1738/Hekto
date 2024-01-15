@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Intro(props) {
   return (
     <div className="wrapper flex h-[286px] flex-col justify-center bg-background font-body">
-      <span className="text-text text-bold text-4xl">My Account</span>
+      <span className="text-text text-bold text-4xl">{props.name}</span>
 
       <ul className="flex gap-2">
         <li>
@@ -15,7 +15,7 @@ export default function Intro(props) {
         </li>
         <li>
           <Link to="login" className="text-accent">
-            My account{" "}
+            {props.name}
           </Link>
         </li>
       </ul>

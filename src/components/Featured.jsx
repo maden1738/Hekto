@@ -6,13 +6,19 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import ProductLoader from "./common/ProductLoader";
 
 export default function Featured() {
   const [trendingProducts, setTrendingProducts] = useState([1, 2]);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     axios
       .get("https://ecommerce-sagartmg2.vercel.app/api/products/trending")
-      .then((res) => setTrendingProducts(res.data.data))
+      .then((res) => {
+        setTrendingProducts(res.data.data);
+        setIsLoading(false);
+      })
       .catch((err) => console.log(err));
   }, []);
   //     // .then((res) => res.json)
@@ -109,8 +115,14 @@ export default function Featured() {
   return (
     <div className=" wrapper  mt-10  md:mt-[182px] lg:mt-[219px] ">
       <Slider {...settings}>
+        {isLoading &&
+          [1, 2, 3, 4].map((el) => {
+            return <ProductLoader />;
+          })}
         {trendingProducts.map((el) => (
-          <FeaturedProduct key={el._id} product={el} />
+          <Link to={`/products/${el._id}`}>
+            <FeaturedProduct key={el._id} product={el} />
+          </Link>
         ))}
       </Slider>
     </div>
