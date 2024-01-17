@@ -5,9 +5,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-export default function () {
-  const [user, setUser] = useState();
-
+export default function ({ setUser }) {
   const navigate = useNavigate();
 
   function handleSubmit(event) {

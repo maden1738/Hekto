@@ -13,14 +13,14 @@ import { Route, Routes } from "react-router-dom";
 import Footer from "./components/common/Footer";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useState } from "react";
 
 function App() {
+  const [user, setUser] = useState();
   return (
     <>
-      <Header />
+      <Header user={user} />
       <Navbar />
-      {/* <Carousel />
-      <Featured /> */}
       <Routes>
         <Route path="" element={<Home />} />
         <Route path="pages" element={<Pages />} />
@@ -31,7 +31,7 @@ function App() {
         <Route path="blog" element={<Blog />} />
         <Route path="shop" element={<Shop />} />
         <Route path="contact" element={<Contact />} />
-        <Route path="login" element={<Login />} />
+        <Route path="login" element={<Login setUser={setUser} />} />
       </Routes>
       <Footer />
 
