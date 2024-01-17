@@ -24,7 +24,7 @@ export default function Header() {
           <option value="usd">USD</option>
           <option value="nrs">NRS</option>
         </select>
-        <Link to="/login">Login</Link>
+        <Link to="/login">{"Login"}</Link>
         <div>WishList</div>
       </div>
     </section>

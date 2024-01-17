@@ -10,6 +10,9 @@ import Login from "./pages/Login";
 import Products from "./pages/Products";
 import SingleProduct from "./pages/SingleProduct";
 import { Route, Routes } from "react-router-dom";
+import Footer from "./components/common/Footer";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -30,6 +33,9 @@ function App() {
         <Route path="contact" element={<Contact />} />
         <Route path="login" element={<Login />} />
       </Routes>
+      <Footer />
+
+      <ToastContainer />
     </>
   );
 }

@@ -1,15 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import Breadcrumb from "../components/common/Breadcrumb";
 import Footer from "../components/common/Footer";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function () {
+  const [user, setUser] = useState();
+
+  const navigate = useNavigate();
+
   function handleSubmit(event) {
     event.preventDefault();
-    axios.post("https://ecommerce-sagartmg2.vercel.app/api/users/login", {
-      email: event.target.email.value,
-      password: event.target.password.value,
-    });
+    axios
+      .post("https://ecommerce-sagartmg2.vercel.app/api/users/login", {
+        email: event.target.email.value,
+        password: event.target.password.value,
+      })
+      .then((res) => {
+        toast("Login Succesful");
+        navigate("/");
+        setUser(res.data.user.name);
+        //res.data.user.name
+      })
+      .catch((err) => {
+        toast.error("Invalid credentials");
+      });
   }
 
   return (
@@ -49,7 +65,6 @@ export default function () {
           </span>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

@@ -53,7 +53,6 @@ export default function SingleProduct() {
           </div>
         </div>
       )}
-      <Footer />
     </>
   );
 }
