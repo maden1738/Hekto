@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { CiMail } from "react-icons/ci";
 import { BsTelephone } from "react-icons/bs";
-export default function Header(props) {
+import { useSelector } from "react-redux";
+export default function Header() {
+  const user = useSelector((store) => store.user.value);
+  console.log(user);
   return (
     <section className="wrapper flex flex-col items-center gap-2 bg-primary py-2 font-body font-semibold text-white  lg:flex-row lg:justify-between   ">
       <div className="flex gap-4 lg:gap-9">
@@ -24,7 +27,7 @@ export default function Header(props) {
           <option value="usd">USD</option>
           <option value="nrs">NRS</option>
         </select>
-        <Link to="/login">{props.user || "Login"}</Link>
+        <Link to="/login">{user?.name || "Login"}</Link>
         <div>WishList</div>
       </div>
     </section>

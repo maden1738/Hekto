@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import Breadcrumb from "../components/common/Breadcrumb";
-import Footer from "../components/common/Footer";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { setUser } from "../app/slice/userSlice";
+import { useDispatch } from "react-redux";
 
-export default function ({ setUser }) {
+export default function Login() {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   function handleSubmit(event) {
     event.preventDefault();
     axios
@@ -18,11 +19,14 @@ export default function ({ setUser }) {
       .then((res) => {
         toast("Login Succesful");
         navigate("/");
-        setUser(res.data.user.name);
+        dispatch(setUser(res.data.user));
         //res.data.user.name
       })
       .catch((err) => {
-        toast.error("Invalid credentials");
+        if (err.response?.status === 401) {
+          return toast.error("Invalid credentials");
+        }
+        return toast.error("Something went wrong.Try again later");
       });
   }
 
@@ -58,7 +62,7 @@ export default function ({ setUser }) {
             <span className="text-subText">Forgor your Password?</span>
             <button className="btn-red">Sign In</button>
           </form>
-          <span className="text-subText mt-5">
+          <span className="mt-5 text-subText">
             Don't have an Account?Create account
           </span>
         </div>
