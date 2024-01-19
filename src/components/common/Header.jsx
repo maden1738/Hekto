@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import { CiMail } from "react-icons/ci";
 import { BsTelephone } from "react-icons/bs";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
+import { logout } from "../../app/slice/userSlice";
+
 export default function Header() {
   const user = useSelector((store) => store.user.value);
+  const dispatch = useDispatch();
   console.log(user);
   return (
     <section className="wrapper flex flex-col items-center gap-2 bg-primary py-2 font-body font-semibold text-white  lg:flex-row lg:justify-between   ">
@@ -29,7 +33,13 @@ export default function Header() {
           <option value="usd">USD</option>
           <option value="nrs">NRS</option>
         </select>
-        <Link to="/login">{user?.name ? "Logout" : "Login"}</Link>
+        {user?.name ? (
+          <span className="cursor-pointer" onClick={() => dispatch(logout())}>
+            Logout
+          </span>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
         <div>WishList</div>
       </div>
     </section>

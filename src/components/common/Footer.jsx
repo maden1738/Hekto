@@ -1,13 +1,22 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
+  const navigate = useNavigate();
   return (
     <>
       <div className="wrapper   flex flex-col gap-9  bg-background py-24 font-body lg:flex-row lg:justify-between   lg:text-left">
         <section className="flex flex-col items-center gap-2 lg:items-start">
           <span className=" text-[38px] font-bold">Hekto</span>
           <div className="flex ">
-            <button className="btn-red">Sign Up</button>
+            <button
+              className="btn-red"
+              onClick={() => {
+                navigate("/signup");
+              }}
+            >
+              Sign Up
+            </button>
           </div>
           <p className="text-subText">Contact Info</p>
           <p className=" text-subText">

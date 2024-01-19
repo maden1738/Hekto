@@ -21,6 +21,7 @@ export default function Login() {
         toast("Login Succesful");
         navigate("/");
         dispatch(setUser(res.data.user));
+        localStorage.setItem("access_token", res.data.access_token);
         //res.data.user.name
       })
       .catch((err) => {
@@ -64,7 +65,17 @@ export default function Login() {
             <button className="btn-red">Sign In</button>
           </form>
           <span className="mt-5 text-subText">
-            <Link to="signup">Don't have an Account? Create account</Link>
+            <p>
+              Don't have an Account?{" "}
+              <span
+                className="cursor-pointer hover:underline"
+                onClick={() => {
+                  navigate("/signup");
+                }}
+              >
+                Create account
+              </span>
+            </p>
           </span>
         </div>
       </div>

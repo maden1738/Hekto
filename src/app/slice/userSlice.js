@@ -6,13 +6,17 @@ export const userSlice = createSlice({
     value: null,
   },
   reducers: {
-    setUser: (state, payload) => {
-      state.value = payload.payload;
+    setUser: (state, action) => {
+      state.value = action.payload;
+    },
+    logout: (state) => {
+      state.value = null;
+      localStorage.removeItem("access_token");
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setUser } = userSlice.actions;
+export const { setUser, logout } = userSlice.actions;
 
 export default userSlice.reducer;
