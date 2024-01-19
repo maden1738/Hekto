@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { setUser } from "../app/slice/userSlice";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -63,7 +64,7 @@ export default function Login() {
             <button className="btn-red">Sign In</button>
           </form>
           <span className="mt-5 text-subText">
-            Don't have an Account?Create account
+            <Link to="signup">Don't have an Account? Create account</Link>
           </span>
         </div>
       </div>

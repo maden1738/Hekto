@@ -7,6 +7,7 @@ import Contact from "./pages/Contact";
 import Pages from "./pages/Pages";
 import Shop from "./pages/Shop";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import Products from "./pages/Products";
 import SingleProduct from "./pages/SingleProduct";
 import { Route, Routes } from "react-router-dom";
@@ -31,6 +32,7 @@ function App() {
         <Route path="shop" element={<Shop />} />
         <Route path="contact" element={<Contact />} />
         <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Signup />} />
       </Routes>
       <Footer />
 

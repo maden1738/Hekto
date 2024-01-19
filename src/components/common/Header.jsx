@@ -18,6 +18,8 @@ export default function Header() {
         </div>
       </div>
 
+      {user?.name && <span>hi, {user.name}</span>}
+
       <div className="flex gap-4">
         <select name="language" id="" className="bg-inherit">
           <option value="english">English</option>
@@ -27,7 +29,7 @@ export default function Header() {
           <option value="usd">USD</option>
           <option value="nrs">NRS</option>
         </select>
-        <Link to="/login">{user?.name || "Login"}</Link>
+        <Link to="/login">{user?.name ? "Logout" : "Login"}</Link>
         <div>WishList</div>
       </div>
     </section>

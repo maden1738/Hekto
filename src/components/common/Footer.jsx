@@ -7,22 +7,17 @@ export default function Footer() {
         <section className="flex flex-col items-center gap-2 lg:items-start">
           <span className=" text-[38px] font-bold">Hekto</span>
           <div className="flex ">
-            <input
-              type="text"
-              placeholder="Enter Email Address"
-              className="py-3 pl-4 pr-4 lg:pr-10"
-            />
             <button className="btn-red">Sign Up</button>
           </div>
           <p className="text-subText">Contact Info</p>
-          <p className="text-subText text-center">
+          <p className=" text-subText">
             17 Princess Road, London, Greater London NW1 8JR, UK
           </p>
         </section>
 
         <section className="flex flex-col items-center gap-2 lg:items-start">
           <span className="text-[22px] font-semibold">Categories</span>
-          <ul className="text-subText py- text-center lg:text-left">
+          <ul className="py- text-center text-subText lg:text-left">
             <li>Laptops & Computers</li>
             <li>Cameras & Photography</li>
             <li>Video Games & Console</li>
@@ -32,7 +27,7 @@ export default function Footer() {
 
         <section className="flex flex-col items-center gap-2 lg:items-start">
           <span className="text-[22px] font-semibold">Customer Care</span>
-          <ul className="text-subText py- text-center lg:text-left">
+          <ul className="py- text-center text-subText lg:text-left">
             <li>My Account</li>
             <li>Discounts</li>
             <li>Returns</li>
@@ -42,7 +37,7 @@ export default function Footer() {
 
         <section className="flex flex-col items-center gap-2 lg:items-start">
           <span className="text-[22px] font-semibold">Pages</span>
-          <ul className="text-subText text-center lg:text-left ">
+          <ul className="text-center text-subText lg:text-left ">
             <li>Blog</li>
             <li>Browse the page</li>
             <li>Category</li>
@@ -50,7 +45,7 @@ export default function Footer() {
           </ul>
         </section>
       </div>
-      <div className="wrapper text-subText bg-violet-100 py-4">
+      <div className="wrapper bg-violet-100 py-4 text-subText">
         Swarna Jang Maden
       </div>
     </>
