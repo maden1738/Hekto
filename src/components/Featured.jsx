@@ -120,9 +120,7 @@ export default function Featured() {
             return <ProductLoader />;
           })}
         {trendingProducts.map((el) => (
-          <Link to={`/products/${el._id}`}>
-            <FeaturedProduct key={el._id} product={el} />
-          </Link>
+          <FeaturedProduct key={el._id} product={el} />
         ))}
       </Slider>
     </div>

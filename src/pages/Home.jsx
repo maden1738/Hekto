@@ -64,7 +64,7 @@ export default function Home() {
                       />
                     </div>
                   </div>
-                  <div className="text-secondary mt-2 flex justify-between">
+                  <div className="mt-2 flex justify-between text-secondary">
                     <p>{el.name}</p>
                     <p className="mr-2">${el.price}</p>
                   </div>

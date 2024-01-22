@@ -9,6 +9,7 @@ import Shop from "./pages/Shop";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Products from "./pages/Products";
+import Addproduct from "./pages/Addproduct";
 import SingleProduct from "./pages/SingleProduct";
 import { Route, Routes } from "react-router-dom";
 import Footer from "./components/common/Footer";
@@ -18,6 +19,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { setUser } from "./app/slice/userSlice";
+import Cart from "./pages/Cart";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,7 +33,8 @@ function App() {
             Authorization: `Bearer ${access_token}`,
           },
         })
-        .then((res) => dispatch(setUser(res.data)));
+        .then((res) => dispatch(setUser(res.data)))
+        .catch((error) => {});
     }
   }, []);
   return (
@@ -44,12 +47,14 @@ function App() {
         <Route path="products">
           <Route path="" element={<Products />} />
           <Route path=":slug" element={<SingleProduct />} />
+          <Route path="add" element={<Addproduct />} />
         </Route>
         <Route path="blog" element={<Blog />} />
         <Route path="shop" element={<Shop />} />
         <Route path="contact" element={<Contact />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
+        <Route path="cart" element={<Cart />} />
       </Routes>
       <Footer />
 

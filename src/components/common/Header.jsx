@@ -7,6 +7,7 @@ import { logout } from "../../app/slice/userSlice";
 
 export default function Header() {
   const user = useSelector((store) => store.user.value);
+  const cart = useSelector((store) => store.cart.value);
   const dispatch = useDispatch();
   console.log(user);
   return (
@@ -34,13 +35,17 @@ export default function Header() {
           <option value="nrs">NRS</option>
         </select>
         {user?.name ? (
-          <span className="cursor-pointer" onClick={() => dispatch(logout())}>
-            Logout
-          </span>
+          <div className="flex gap-4">
+            <span className="cursor-pointer" onClick={() => dispatch(logout())}>
+              Logout
+            </span>
+            <Link to="cart" className="cursor-pointer">
+              Cart ({cart})
+            </Link>
+          </div>
         ) : (
           <Link to="/login">Login</Link>
         )}
-        <div>WishList</div>
       </div>
     </section>
   );
