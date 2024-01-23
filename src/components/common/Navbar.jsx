@@ -2,6 +2,7 @@ import searchLens from "../../assets/search.png";
 import { Link } from "react-router-dom";
 import { IoMenuSharp } from "react-icons/io5";
 import { useState } from "react";
+import ProtectedComponent from "./ProtectedComponent";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,9 +29,11 @@ export default function Navbar() {
           <li>
             <Link to="/products">Products</Link>
           </li>
-          <li>
-            <Link to="/blog">Blog</Link>
-          </li>
+          <ProtectedComponent role="seller">
+            <li>
+              <Link to="/products/add">Add Product</Link>
+            </li>
+          </ProtectedComponent>
           <li>
             <Link to="/shop">Shop</Link>
           </li>

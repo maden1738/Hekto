@@ -20,8 +20,10 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import { setUser } from "./app/slice/userSlice";
 import Cart from "./pages/Cart";
+import ProtectedRoute from "./components/common/ProtectedRoute";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,30 +35,50 @@ function App() {
             Authorization: `Bearer ${access_token}`,
           },
         })
-        .then((res) => dispatch(setUser(res.data)))
-        .catch((error) => {});
+        .then((res) => {
+          setIsLoading(false);
+          dispatch(setUser(res.data));
+        })
+        .catch((error) => {
+          setIsLoading(false);
+        });
+    } else {
+      setIsLoading(false);
     }
   }, []);
+
   return (
     <>
-      <Header />
-      <Navbar />
-      <Routes>
-        <Route path="" element={<Home />} />
-        <Route path="pages" element={<Pages />} />
-        <Route path="products">
-          <Route path="" element={<Products />} />
-          <Route path=":slug" element={<SingleProduct />} />
-          <Route path="add" element={<Addproduct />} />
-        </Route>
-        <Route path="blog" element={<Blog />} />
-        <Route path="shop" element={<Shop />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="login" element={<Login />} />
-        <Route path="signup" element={<Signup />} />
-        <Route path="cart" element={<Cart />} />
-      </Routes>
-      <Footer />
+      {isLoading ? (
+        <div className="flex h-screen items-center justify-center">
+          <p>logo./ quotes/ spinner</p>
+        </div>
+      ) : (
+        <>
+          <Header />
+          <Navbar />
+          <Routes>
+            <Route path="" element={<Home />} />
+            <Route path="pages" element={<Pages />} />
+            <Route path="products">
+              <Route path="" element={<Products />} />
+              <Route path=":slug" element={<SingleProduct />} />
+            </Route>
+            <Route path="blog" element={<Blog />} />
+            <Route path="shop" element={<Shop />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="login" element={<Login />} />
+            <Route path="signup" element={<Signup />} />
+            <Route path="" element={<ProtectedRoute role="buyer" />}>
+              <Route path="cart" element={<Cart />} />
+            </Route>
+            <Route path="products" element={<ProtectedRoute role="seller" />}>
+              <Route path="add" element={<Addproduct />} />
+            </Route>
+          </Routes>
+          <Footer />
+        </>
+      )}
 
       <ToastContainer />
     </>

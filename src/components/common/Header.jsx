@@ -4,12 +4,13 @@ import { BsTelephone } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
 
 import { logout } from "../../app/slice/userSlice";
+import ProtectedComponent from "./ProtectedComponent";
 
 export default function Header() {
   const user = useSelector((store) => store.user.value);
   const cart = useSelector((store) => store.cart.value);
   const dispatch = useDispatch();
-  console.log(user);
+  // console.log(user);
   return (
     <section className="wrapper flex flex-col items-center gap-2 bg-primary py-2 font-body font-semibold text-white  lg:flex-row lg:justify-between   ">
       <div className="flex gap-4 lg:gap-9">
@@ -39,9 +40,11 @@ export default function Header() {
             <span className="cursor-pointer" onClick={() => dispatch(logout())}>
               Logout
             </span>
-            <Link to="cart" className="cursor-pointer">
-              Cart ({cart})
-            </Link>
+            <ProtectedComponent role="buyer">
+              <Link to="cart" className="cursor-pointer">
+                Cart ({cart})
+              </Link>
+            </ProtectedComponent>
           </div>
         ) : (
           <Link to="/login">Login</Link>
