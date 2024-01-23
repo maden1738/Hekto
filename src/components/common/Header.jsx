@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { CiMail } from "react-icons/ci";
 import { BsTelephone } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
+import { FaShoppingCart } from "react-icons/fa";
 
 import { logout } from "../../app/slice/userSlice";
 import ProtectedComponent from "./ProtectedComponent";
@@ -41,8 +42,11 @@ export default function Header() {
               Logout
             </span>
             <ProtectedComponent role="buyer">
-              <Link to="cart" className="cursor-pointer">
-                Cart ({cart})
+              <Link
+                to="cart"
+                className="flex cursor-pointer items-center gap-1"
+              >
+                <FaShoppingCart /> ({cart})
               </Link>
             </ProtectedComponent>
           </div>

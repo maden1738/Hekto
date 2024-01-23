@@ -6,12 +6,14 @@ import { IoCartOutline } from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa";
 import axios from "axios";
 import noImage from "../assets/noimage.jpg";
-import Footer from "../components/common/Footer";
 import ProductLoader from "../components/common/ProductLoader";
+import { useDispatch } from "react-redux";
+import { setCart } from "../app/slice/cartSlice";
 
 export default function Home() {
   const [latestProduct, setLatestProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     axios
@@ -45,7 +47,9 @@ export default function Home() {
                     <span className="absolute bottom-4 left-0  flex  scale-0 flex-col gap-4 p-4 group-hover:scale-100">
                       <IoCartOutline
                         className="cursor-pointer text-lg text-primary"
-                        onClick={() => {
+                        onClick={(event) => {
+                          event.preventDefault();
+                          dispatch(setCart());
                           alert("added to cart");
                         }}
                       />
