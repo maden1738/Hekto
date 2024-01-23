@@ -7,13 +7,15 @@ import { FaRegHeart } from "react-icons/fa";
 import axios from "axios";
 import noImage from "../assets/noimage.jpg";
 import ProductLoader from "../components/common/ProductLoader";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../app/slice/cartSlice";
+import { toast } from "react-toastify";
 
 export default function Home() {
   const [latestProduct, setLatestProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
+  const user = useSelector((store) => store.user.value);
 
   useEffect(() => {
     axios
@@ -49,8 +51,12 @@ export default function Home() {
                         className="cursor-pointer text-lg text-primary"
                         onClick={(event) => {
                           event.preventDefault();
-                          dispatch(setCart());
-                          alert("added to cart");
+                          if (user) {
+                            dispatch(setCart());
+                            alert("added to cart");
+                          } else {
+                            toast.error("Login Required");
+                          }
                         }}
                       />
                       <FaRegHeart

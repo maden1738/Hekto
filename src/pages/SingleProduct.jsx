@@ -4,8 +4,12 @@ import Footer from "../components/common/Footer";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { FaRegHeart } from "react-icons/fa";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { setCart } from "../app/slice/cartSlice";
 
 export default function SingleProduct() {
+  const dispatch = useDispatch();
   const [productDetails, setProductDetails] = useState();
   let productId = useParams();
 
@@ -36,13 +40,22 @@ export default function SingleProduct() {
             <img src={productDetails.image} alt="" className="max-w-[375px]" />
           </div>
           <div>
-            <p className="text-text text-4xl font-semibold">
+            <p className="text-4xl font-semibold text-text">
               {productDetails.name}
             </p>
             <p>${productDetails.price}</p>
             <p className="text-subText">{productDetails.description}</p>
-            <div className="text-text flex gap-[26px] py-4">
-              <button className="">Add to Cart</button>
+            <div className="flex gap-[26px] py-4 text-text">
+              <button
+                className=""
+                type="button"
+                onClick={() => {
+                  dispatch(setCart());
+                  alert("added to cart");
+                }}
+              >
+                Add to Cart
+              </button>
               <FaRegHeart />
             </div>
             <div>
@@ -53,6 +66,16 @@ export default function SingleProduct() {
           </div>
         </div>
       )}
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          toast.error("login requried.");
+        }}
+      >
+        <input type="text" className="border px-4 py-2" />
+        <input type="text" className="border px-4 py-2" />
+        <button className="btn-red">Add Review</button>
+      </form>
     </>
   );
 }

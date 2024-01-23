@@ -1,27 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer components {
-  .btn-red {
-    @apply rounded-sm bg-accent px-9 py-2 text-white;
-  }
-
-  .btn-green {
-    @apply rounded-sm bg-green-500 px-[12px] py-[3px] text-white;
-  }
-  .container {
-    @apply mx-auto w-full  px-3 sm:max-w-[600px] md:max-w-[740px] lg:max-w-[990px] lg:px-[15%] xl:max-w-[1216px];
-  }
-  .wrapper {
-    @apply mx-auto w-full  px-[5%] md:px-[8%] lg:px-[10%] xl:px-[15%];
-  }
-  flex-center {
-    @apply flex items-center justify-center;
-  }
-}
+@import url("./src/tailwind.css");
 
 /* * {
   background-color: rgba(255, 0, 0, 0.5);
