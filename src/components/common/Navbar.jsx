@@ -34,9 +34,11 @@ export default function Navbar() {
               <Link to="/products/add">Add Product</Link>
             </li>
           </ProtectedComponent>
-          <li>
-            <Link to="/shop">Shop</Link>
-          </li>
+          <ProtectedComponent role="seller">
+            <li>
+              <Link to="/products/seller">Seller Products</Link>
+            </li>
+          </ProtectedComponent>
           <li>
             <Link to="/contact">Contact</Link>
           </li>

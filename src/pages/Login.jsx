@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { setUser } from "../app/slice/userSlice";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { API_URL } from "../constants/domain";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default function Login() {
   function handleSubmit(event) {
     event.preventDefault();
     axios
-      .post("https://ecommerce-sagartmg2.vercel.app/api/users/login", {
+      .post(`${API_URL}/users/login`, {
         email: event.target.email.value,
         password: event.target.password.value,
       })

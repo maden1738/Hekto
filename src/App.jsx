@@ -21,6 +21,9 @@ import axios from "axios";
 import { setUser } from "./app/slice/userSlice";
 import Cart from "./pages/Cart";
 import ProtectedRoute from "./components/common/ProtectedRoute";
+import SellerProducts from "./pages/SellerProducts";
+import EditProduct from "./pages/EditProduct";
+import UpsertProduct from "./pages/UpsertProduct";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -73,7 +76,9 @@ function App() {
               <Route path="cart" element={<Cart />} />
             </Route>
             <Route path="products" element={<ProtectedRoute role="seller" />}>
-              <Route path="add" element={<Addproduct />} />
+              <Route path="seller" element={<SellerProducts />} />
+              <Route path="add" element={<UpsertProduct />} />
+              <Route path="edit/_:id" element={<UpsertProduct />} />
             </Route>
           </Routes>
           <Footer />

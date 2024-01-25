@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-export default function Addproduct() {
+export default function EditProduct() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("here");
@@ -25,12 +25,14 @@ export default function Addproduct() {
   return (
     <>
       <form className="container mt-5 " onSubmit={handleSubmit}>
+        edit products
         <div className="grid gap-x-4 gap-y-0 md:grid-cols-2 lg:grid-cols-3">
           <div className="form-group">
             <label htmlFor="" className="form-label required-field">
               Name
             </label>
             <input
+              value="watch"
               className="form-control"
               type="text"
               placeholder="Name"
@@ -70,7 +72,6 @@ export default function Addproduct() {
           </div>
         </div>
         <button className="btn-red">submit</button>
-
         {/* <Input name={"name"}/>
       <Input name={"price"} type="number"/> */}
       </form>
