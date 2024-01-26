@@ -7,6 +7,10 @@
     @apply rounded-sm bg-accent px-9 py-2 text-white;
   }
 
+  .btn-small {
+    @apply rounded-sm bg-accent px-2 py-1 text-white;
+  }
+
   .btn-green {
     @apply rounded-sm bg-green-500 px-[12px] py-[3px] text-white;
   }
@@ -31,4 +35,9 @@
   .required-field {
     @apply after:text-red-500 after:content-['_*'];
   }
+
+  /* button:disabled {
+    opacity: 0.5;
+    cursor: no-drop;
+  } */
 }

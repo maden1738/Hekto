@@ -78,7 +78,7 @@ function App() {
             <Route path="products" element={<ProtectedRoute role="seller" />}>
               <Route path="seller" element={<SellerProducts />} />
               <Route path="add" element={<UpsertProduct />} />
-              <Route path="edit/_:id" element={<UpsertProduct />} />
+              <Route path="edit/:_id" element={<UpsertProduct />} />
             </Route>
           </Routes>
           <Footer />
