@@ -15,6 +15,7 @@ export default function UpsertProduct() {
   };
   const [data, setData] = useState(initialValue);
   const [isSubmmitting, setIsSubmitting] = useState(false);
+  const [validationError, setValidationError] = useState({});
 
   useEffect(() => {
     if (_id) {
@@ -35,10 +36,6 @@ export default function UpsertProduct() {
     let productData = data;
     let access_token = localStorage.getItem("access_token");
     setIsSubmitting(true);
-    //     let method = "post";
-    //     if (_id) {
-    //       method = "put";
-    //     }
     axios
       .post(
         "https://ecommerce-sagartmg2.vercel.app/api/products",
@@ -56,12 +53,31 @@ export default function UpsertProduct() {
       })
       .catch((err) => {
         setIsSubmitting(false);
-        console.log(err);
+        if (err.response?.status === 400) {
+          console.log(err.response.data);
+          let errObj = {};
+          err.response.data.errors.forEach((el) => {
+            errObj[el.param] = el.msg;
+          });
+          setValidationError(errObj);
+        }
+        // console.log(err.response.data);
       });
   };
 
   const handleChange = (event) => {
     setData({ ...data, [event.target.name]: event.target.value });
+  };
+  const handleCategoryChange = (event, position) => {
+    setData({
+      ...data,
+      categories: data.categories.map((category, index) => {
+        if (position == index) {
+          return event.target.value;
+        }
+        return category;
+      }),
+    });
   };
 
   return (
@@ -81,6 +97,12 @@ export default function UpsertProduct() {
               placeholder="Name"
               name="name"
             />
+
+            {validationError.name && (
+              <span className="text-sm text-red-500">
+                {validationError.name}
+              </span>
+            )}
           </div>
           <div className="form-group">
             <label htmlFor="" className="form-label required-field">
@@ -94,6 +116,11 @@ export default function UpsertProduct() {
               placeholder="Price"
               name="price"
             />
+            {validationError.price && (
+              <span className="text-sm text-red-500">
+                {validationError.price}
+              </span>
+            )}
           </div>
           <div className="form-group">
             <label htmlFor="" className="form-label">
@@ -112,16 +139,42 @@ export default function UpsertProduct() {
           <div className="form-group">
             <label htmlFor="" className="form-label">
               Category{" "}
-              <button type="button" className="btn-small">
+              <button
+                type="button"
+                className="btn-small"
+                onClick={() => {
+                  setData({ ...data, categories: [...data.categories, ""] });
+                }}
+              >
                 Add
               </button>
             </label>
-            <div className="flex">
-              <input className="form-control inline w-auto" />
-              <button type="button" className="btn-small">
-                delete
-              </button>
-            </div>
+            {data.categories.map((category, index) => (
+              <div className="my-1 flex" key={index}>
+                <input
+                  className="form-control inline w-auto"
+                  name="category"
+                  value={category}
+                  onChange={(event) => {
+                    handleCategoryChange(event, index);
+                  }}
+                />
+                <button
+                  type="button"
+                  className="btn-small"
+                  onClick={(event, index) => {
+                    setData({
+                      ...data,
+                      categories: data.categories.filter(
+                        (category, idx) => idx != index,
+                      ),
+                    });
+                  }}
+                >
+                  delete
+                </button>
+              </div>
+            ))}
           </div>
 
           <div className="form-group">
