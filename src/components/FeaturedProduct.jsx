@@ -3,7 +3,7 @@ import { IoCartOutline } from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setCart } from "../app/slice/cartSlice";
+import { addToCart, setCart } from "../app/slice/cartSlice";
 
 export default function FeaturedProduct({ product }) {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ export default function FeaturedProduct({ product }) {
             className="cursor-pointer text-lg text-primary"
             onClick={() => {
               alert("added to cart");
-              dispatch(setCart());
+              dispatch(addToCart(product));
             }}
           />
           <FaRegHeart

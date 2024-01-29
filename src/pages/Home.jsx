@@ -8,7 +8,7 @@ import axios from "axios";
 import noImage from "../assets/noimage.jpg";
 import ProductLoader from "../components/common/ProductLoader";
 import { useDispatch, useSelector } from "react-redux";
-import { setCart } from "../app/slice/cartSlice";
+import { setCart, addToCart } from "../app/slice/cartSlice";
 import { toast } from "react-toastify";
 
 export default function Home() {
@@ -52,7 +52,7 @@ export default function Home() {
                         onClick={(event) => {
                           event.preventDefault();
                           if (user) {
-                            dispatch(setCart());
+                            dispatch(addToCart(el));
                             alert("added to cart");
                           } else {
                             toast.error("Login Required");

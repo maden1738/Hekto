@@ -46,7 +46,7 @@ export default function Header() {
                 to="cart"
                 className="flex cursor-pointer items-center gap-1"
               >
-                <FaShoppingCart /> ({cart})
+                <FaShoppingCart /> ({})
               </Link>
             </ProtectedComponent>
           </div>

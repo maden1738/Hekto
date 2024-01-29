@@ -6,7 +6,7 @@ import axios from "axios";
 import { FaRegHeart } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { setCart } from "../app/slice/cartSlice";
+import { addToCart, setCart } from "../app/slice/cartSlice";
 
 export default function SingleProduct() {
   const dispatch = useDispatch();
@@ -50,7 +50,7 @@ export default function SingleProduct() {
                 className=""
                 type="button"
                 onClick={() => {
-                  dispatch(setCart());
+                  dispatch(addToCart(productDetails));
                   alert("added to cart");
                 }}
               >
