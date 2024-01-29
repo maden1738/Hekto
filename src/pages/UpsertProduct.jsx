@@ -11,6 +11,7 @@ export default function UpsertProduct() {
     price: "",
     in_stock: "",
     categories: [""],
+    image: null,
     description: "",
   };
   const [data, setData] = useState(initialValue);
@@ -33,23 +34,36 @@ export default function UpsertProduct() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log("here");
-    let productData = data;
+    // let productData = data;
     let access_token = localStorage.getItem("access_token");
+    let formData = new FormData();
+    formData.append("name", data.name);
+    formData.append("price", data.price);
+    formData.append("description", data.description);
+    formData.append("image", data.image);
+    data.categories.forEach((cat) => {
+      formData.append("categories", cat);
+    });
     setIsSubmitting(true);
-    axios
-      .post(
-        "https://ecommerce-sagartmg2.vercel.app/api/products",
-        productData,
-        {
-          headers: {
-            Authorization: `Bearer ${access_token}`,
-          },
-        },
-      )
+    let url = "https://ecommerce-sagartmg2.vercel.app/api/products";
+    let method = "post";
+    if (_id) {
+      method = "put";
+      url = "https://ecommerce-sagartmg2.vercel.app/api/products/" + _id;
+    }
+    axios[method](url, formData, {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    })
       .then((res) => {
         setIsSubmitting(false);
-        toast("Submitted");
-        setData(initialValue);
+        if (!_id) {
+          toast("product created.");
+          setData(initialValue);
+        } else {
+          toast("product updated.");
+        }
       })
       .catch((err) => {
         setIsSubmitting(false);
@@ -66,7 +80,13 @@ export default function UpsertProduct() {
   };
 
   const handleChange = (event) => {
-    setData({ ...data, [event.target.name]: event.target.value });
+    setData({
+      ...data,
+      [event.target.name]:
+        event.target.type == "file"
+          ? event.target.files[0]
+          : event.target.value,
+    });
   };
   const handleCategoryChange = (event, position) => {
     setData({
@@ -77,6 +97,13 @@ export default function UpsertProduct() {
         }
         return category;
       }),
+    });
+  };
+  const handleDelete = (event, index) => {
+    console.log(index);
+    setData({
+      ...data,
+      categories: data.categories.filter((category, idx) => idx !== index),
     });
   };
 
@@ -162,14 +189,7 @@ export default function UpsertProduct() {
                 <button
                   type="button"
                   className="btn-small"
-                  onClick={(event, index) => {
-                    setData({
-                      ...data,
-                      categories: data.categories.filter(
-                        (category, idx) => idx != index,
-                      ),
-                    });
-                  }}
+                  onClick={(event) => handleDelete(event, index)}
                 >
                   delete
                 </button>
@@ -177,6 +197,17 @@ export default function UpsertProduct() {
             ))}
           </div>
 
+          <div className="form-group">
+            <label htmlFor="" className="form-label">
+              Image
+            </label>
+            <input
+              className="form-control"
+              type="file"
+              name="image"
+              onChange={handleChange}
+            />
+          </div>
           <div className="form-group">
             <label htmlFor="" className="form-label">
               description

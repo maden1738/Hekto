@@ -70,7 +70,7 @@ export default function Home() {
                       <img
                         src={el.image ? el.image : noImage}
                         alt=""
-                        className="h-[220px] w-[220px] "
+                        className="h-[220px] w-[220px] object-cover"
                       />
                     </div>
                   </div>
