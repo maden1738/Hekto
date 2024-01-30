@@ -7,7 +7,6 @@ export const cartSlice = createSlice({
   },
   reducers: {
     setCart: (state) => {
-      //       console.log(state.value);
       state.value += 1;
     },
     addToCart: (state, action) => {
@@ -26,10 +25,34 @@ export const cartSlice = createSlice({
       }
       state.value = temp;
     },
+    increment: (state, action) => {
+      let product = action.payload;
+      let temp = [...state.value];
+      temp.forEach((el, index) => {
+        if (el._id === product._id) {
+          temp[index] = { ...el, quantity: el.quantity + 1 };
+        }
+      });
+      state.value = temp;
+    },
+    decrement: (state, action) => {
+      let product = action.payload;
+      let temp = [...state.value];
+      temp.forEach((el, index) => {
+        if (el._id === product._id) {
+          temp[index] = { ...el, quantity: el.quantity - 1 };
+          if (temp[index].quantity == 0) {
+            temp.splice(index, 1);
+          }
+        }
+      });
+
+      state.value = temp;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setCart, addToCart } = cartSlice.actions;
+export const { setCart, addToCart, increment, decrement } = cartSlice.actions;
 
 export default cartSlice.reducer;
