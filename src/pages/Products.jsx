@@ -11,7 +11,7 @@ export default function Products() {
 
   useEffect(() => {
     // let page = searchParams.get("page") || 1;
-    let searchTerm = searchParams.get("searchTerm");
+    let searchTerm = searchParams.get("searchTerm") || "";
     axios
       .get(
         `https://ecommerce-sagartmg2.vercel.app/api/products?search_term=${searchTerm}`,
