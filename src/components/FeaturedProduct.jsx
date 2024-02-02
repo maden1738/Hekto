@@ -12,7 +12,7 @@ export default function FeaturedProduct({ product }) {
   const authenticate = useAuthenticate();
   return (
     <div className="group font-body shadow-xl">
-      <div className="relative flex flex-col items-center justify-center bg-slate-50 px-[45px]  pb-6 pt-[45px]">
+      <div className="relative flex h-[236px]  flex-col items-center justify-center  bg-slate-50   pb-6 pt-[45px]">
         <span className="absolute left-0 top-0 flex scale-0 gap-4 p-4 group-hover:scale-100">
           <IoCartOutline
             className="cursor-pointer text-lg text-primary"
@@ -30,7 +30,11 @@ export default function FeaturedProduct({ product }) {
             }}
           />
         </span>
-        <img src={product.image} alt="" className="h-[178px] w-[178px] " />
+        <img
+          src={product.image}
+          alt=""
+          className="h-[178px] w-[178px] rounded-md object-cover"
+        />
         <button
           className="btn-green hidden
             group-hover:absolute group-hover:bottom-1 group-hover:block

@@ -1,11 +1,12 @@
 import searchLens from "../../assets/search.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoMenuSharp } from "react-icons/io5";
 import { useState } from "react";
 import ProtectedComponent from "./ProtectedComponent";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -47,9 +48,16 @@ export default function Navbar() {
 
       <div className="flex max-h-[40px] grow-0 items-center">
         <IoMenuSharp className=" lg:hidden" onClick={toggleMenu} />
-        <form className="flex ">
+        <form
+          className="flex "
+          onSubmit={(event) => {
+            event.preventDefault();
+            navigate(`/products?searchTerm=${event.target.searchTerm.value}`);
+          }}
+        >
           <input
             type="text"
+            name="searchTerm"
             className="border border-gray-300  focus:border-accent focus:outline-none"
           />
           <button className="flex cursor-pointer items-center justify-center  bg-accent px-2">
