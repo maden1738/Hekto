@@ -7,11 +7,13 @@ import { FaRegHeart } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { addToCart, setCart } from "../app/slice/cartSlice";
+import useAuthenticate from "../hooks/useAuthenticate";
 
 export default function SingleProduct() {
   const dispatch = useDispatch();
   const [productDetails, setProductDetails] = useState();
   let productId = useParams();
+  const authenticate = useAuthenticate();
 
   useEffect(() => {
     axios
@@ -50,8 +52,10 @@ export default function SingleProduct() {
                 className=""
                 type="button"
                 onClick={() => {
-                  dispatch(addToCart(productDetails));
-                  alert("added to cart");
+                  authenticate(() => {
+                    dispatch(addToCart(productDetails));
+                    alert("added to cart");
+                  });
                 }}
               >
                 Add to Cart

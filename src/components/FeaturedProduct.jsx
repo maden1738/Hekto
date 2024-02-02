@@ -4,10 +4,12 @@ import { FaRegHeart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart, setCart } from "../app/slice/cartSlice";
+import useAuthenticate from "../hooks/useAuthenticate";
 
 export default function FeaturedProduct({ product }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const authenticate = useAuthenticate();
   return (
     <div className="group font-body shadow-xl">
       <div className="relative flex flex-col items-center justify-center bg-slate-50 px-[45px]  pb-6 pt-[45px]">
@@ -15,8 +17,10 @@ export default function FeaturedProduct({ product }) {
           <IoCartOutline
             className="cursor-pointer text-lg text-primary"
             onClick={() => {
-              alert("added to cart");
-              dispatch(addToCart(product));
+              authenticate(() => {
+                alert("added to cart");
+                dispatch(addToCart(product));
+              });
             }}
           />
           <FaRegHeart

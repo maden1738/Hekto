@@ -10,11 +10,13 @@ import ProductLoader from "../components/common/ProductLoader";
 import { useDispatch, useSelector } from "react-redux";
 import { setCart, addToCart } from "../app/slice/cartSlice";
 import { toast } from "react-toastify";
+import useAuthenticate from "../hooks/useAuthenticate";
 
 export default function Home() {
   const [latestProduct, setLatestProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
+  const authenticate = useAuthenticate();
   const user = useSelector((store) => store.user.value);
 
   useEffect(() => {
@@ -52,8 +54,10 @@ export default function Home() {
                         onClick={(event) => {
                           event.preventDefault();
                           if (user) {
-                            dispatch(addToCart(el));
-                            alert("added to cart");
+                            authenticate(() => {
+                              dispatch(addToCart(el));
+                              alert("added to cart");
+                            });
                           } else {
                             toast.error("Login Required");
                           }
